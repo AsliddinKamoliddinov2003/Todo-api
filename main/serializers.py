@@ -15,12 +15,12 @@ class TodoSerialiser(serializers.ModelSerializer):
 
 
 
-class UserSerializers(ModelSerializer):
-    class Meta:
-        model = User
-        fields = ["id", "fullname", "username", "password"]
+# class UserSerializers(ModelSerializer):
+#     class Meta:
+#         model = User
+#         fields = ["id", "fullname", "username", "password"]
 
-    def is_valid(self, *args, **kwargs):
-        valid = False
-        if kwargs.get("username",None) and kwargs.get("password", None):
-            return True
+#     def is_valid(self, *args, **kwargs):
+#         valid = False
+#         if kwargs.get("username",None) and kwargs.get("password", None):
+#             return True

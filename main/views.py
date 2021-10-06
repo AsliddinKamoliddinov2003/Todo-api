@@ -12,7 +12,7 @@ from rest_framework.authtoken.views import ObtainAuthToken
 
 from main.serializers import TodoSerialiser
 from .models import Todo, User
-from .serializers import UserSerializers
+# from .serializers import UserSerializers
 
 
 
@@ -90,7 +90,7 @@ class SingleTodoApiView(APIView):
 User = get_user_model()
 
 class UserApiView(ObtainAuthToken):
-    serializer_class = UserSerializers
+    # serializer_class = UserSerializers
 
     def post(self, request):
         serializer = self.serializer_class(data=request.data, context = {'request':request})
@@ -104,7 +104,7 @@ class UserApiView(ObtainAuthToken):
                 if user.check_password(password):
                     token, created = Token.objects.get_or_create(user=user)
                     return Response({
-                        "token":token,
+                        "token":token.key,
                         "username":username,
                         "password":password,
                         "fullname":user.fullname

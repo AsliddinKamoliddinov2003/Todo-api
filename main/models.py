@@ -1,3 +1,4 @@
+from re import T
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, UserManager as BaseUserManager
 
@@ -36,6 +37,13 @@ class User(AbstractBaseUser, PermissionsMixin):
     fullname = models.CharField(max_length=25, blank=True, null=True)
     username = models.CharField(max_length=50, unique=True)
 
+
+    is_active = models.BooleanField(default=True, null=True)
+    is_staff = models.BooleanField(default=True, null=True)
+    is_admin = models.BooleanField(default=False, null=True)
+    is_seperuser = models.BooleanField(default=False, null=True)
+    last_login = models.DateTimeField(auto_now=True, null=True)
+    date_joined = models.DateTimeField(auto_now_add=True, null=True)
 
     REQUIRED_FIELDS = []
     USERNAME_FIELD = "username"
