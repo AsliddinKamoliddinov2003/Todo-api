@@ -5,17 +5,11 @@ from rest_framework.authtoken.models import Token
 from django.contrib.auth import get_user_model
 from rest_framework.authentication import SessionAuthentication, TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
-
-
 from rest_framework.authtoken.views import ObtainAuthToken
 
 
 from main.serializers import TodoSerialiser
 from .models import Todo, User
-# from .serializers import UserSerializers
-
-
-
 
 
 class TodoApiView(APIView):
@@ -90,7 +84,6 @@ class SingleTodoApiView(APIView):
 User = get_user_model()
 
 class UserApiView(ObtainAuthToken):
-    # serializer_class = UserSerializers
 
     def post(self, request):
         serializer = self.serializer_class(data=request.data, context = {'request':request})
